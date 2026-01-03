@@ -14,7 +14,7 @@ The database is designed to act as a **shared, immutable source of truth** that 
 - [References](#references)
 
 ## Overview
-This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 study [*]. That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
+This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 study [ref]. That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
 
 Several limitations of the original dataset motivated the creation of this read-only analytics database:
 - **Data freshness**
@@ -53,19 +53,33 @@ Set the following environment variables before running the setup steps script.
 - `export ROUSRPW="your_readonly_password"` _# Password for rouser (read-only analytics user)_
 
 ## Project structure
+```
 bikeshare-analytics-rds/
-├── main.py # Main setup script - provisions RDS, creates tables, and populates data
-├── analytics.py # Example analytics queries and visualizations using the read-only user
-├── requirements.txt # Python dependencies
-├── LICENSE # Unlicense - public domain dedication
-├── README.md # This file
+├── main.py
+├── analytics.py
+├── requirements.txt
+├── LICENSE
+├── README.md
 ├── py_scripts/
-│ ├── rds_provision.py # AWS RDS instance creation, deletion, and connection management
-│ ├── db_operations.py # Database table creation, data loading, and user management
-│ ├── fetch_raw_data.py # Data fetching from Capital Bikeshare S3 and Open-Meteo API
-│ └── prep_data.py # Data normalization and schema mapping utilities
-├── bikeshare_csv/ # (Generated) Directory containing downloaded bikeshare CSV files
-└── images/ # (Generated) Directory for visualization outputs
+│   ├── rds_provision.py
+│   ├── db_operations.py
+│   ├── fetch_raw_data.py
+│   └── prep_data.py
+├── bikeshare_csv/          # (Generated)
+└── images/                 # (Generated)
+```
+
+**File descriptions:**
+- `main.py` - Main setup script that provisions RDS, creates tables, and populates data
+- `analytics.py` - Example analytics queries and visualizations using the read-only user
+- `requirements.txt` - Python dependencies
+- `LICENSE` - Unlicense - public domain dedication
+- `py_scripts/rds_provision.py` - AWS RDS instance creation, deletion, and connection management
+- `py_scripts/db_operations.py` - Database table creation, data loading, and user management
+- `py_scripts/fetch_raw_data.py` - Data fetching from Capital Bikeshare S3 and Open-Meteo API
+- `py_scripts/prep_data.py` - Data normalization and schema mapping utilities
+- `bikeshare_csv/` - Directory containing downloaded bikeshare CSV files (generated)
+- `images/` - Directory for visualization outputs (generated)
 
 ## Setup
 ### 1. Clone the Repository
@@ -124,7 +138,7 @@ Once the database is set and ready, use the `analytics.py` script to run a very 
 
 ## References
 ### The article the course project is based on
-[*]: Fanaee-T, H., & Gama, J. (2014). Event labeling combining ensemble detectors and background knowledge. _Progress in Artificial Intelligence_, 2(2–3), 113–127. https://doi.org/10.1007/s13748-013-0040-3
+[ref]: Fanaee-T, H., & Gama, J. (2014). Event labeling combining ensemble detectors and background knowledge. _Progress in Artificial Intelligence_, 2(2–3), 113–127. https://doi.org/10.1007/s13748-013-0040-3
 
 ### Data Sources
 - **Capital Bikeshare Data**: [S3 Bucket](https://s3.amazonaws.com/capitalbikeshare-data/index.html)
