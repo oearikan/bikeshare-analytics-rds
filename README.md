@@ -14,7 +14,7 @@ The database is designed to act as a **shared, immutable source of truth** that 
 - [References](#references)
 
 ## Overview
-This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 study [ref](#the-article-the-course-project-is-based-on). That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
+This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 [paper](#the-article-the-course-project-is-based-on). That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
 
 Several limitations of the original dataset motivated the creation of this read-only analytics database:
 - **Data freshness**
