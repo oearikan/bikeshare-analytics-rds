@@ -18,7 +18,7 @@ This project originated from a group assignment that relied on a bikeshare datas
 
 Several limitations of the original dataset motivated the creation of this read-only analytics database:
 - **Data freshness**
-Research naturally benefits from the most complete and up-to-date data available. Individual bikeshare trip data is freely published (link here), the original study is quite dated, therefore the insight it would provide relevant to this day would be limited.
+Research naturally benefits from the most complete and up-to-date data available. Individual bikeshare trip data is freely [published](#data-sources), the original study is quite dated, therefore the insight it would provide relevant to this day would be limited.
 - **Preprocessed, "frozen" CSVs**
 The original dataset was heavily preprocessed and feature-engineered to answer specific research questions. By contrast, this database preserves the raw data, allowing researchers to define their own preprocessing steps and engineered features while keeping the underlying data unchanged.
 - **Weather data consistency** 
