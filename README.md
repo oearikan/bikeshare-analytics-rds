@@ -83,15 +83,15 @@ bikeshare-analytics-rds/
 
 ## Setup
 ### 1. Clone the Repository
-`git clone <repository-url>`
+`git clone https://github.com/oearikan/bikeshare-analytics-rds.git`  
 
+cd into root folder in repository.  
 `cd bikeshare-analytics-rds`
-Replace `<repository-url>` with your actual repository URL.
 
 ### 2. Create a Virtual Environment
-**On macOS/Linux:**
-python3 -m venv venv
-source venv/bin/activate
+**On macOS/Linux:**  
+- `python3 -m venv venv`  
+- `source venv/bin/activate`
 
 ### 3. Install Dependencies
 `pip install -r requirements.txt`
