@@ -132,9 +132,9 @@ The script will:
 7. Create a read-only analytics user (`rouser`) with appropriate permissions
 
 ## Usage
-Based on feedback from the scripts, some steps might need to run again or in isolation. There are also couple of helper funtions incorporated such as deleting the rds, fetching information via boto client that one might want to use.
+Based on feedback from the scripts, some steps might need to run again or in isolation. There are also couple of helper funtions for deleting the rds if need be, fetching information via boto client etc...
 
-Once the database is set and ready, use the `analytics.py` script to run a very simple analytics query and observe its results. The analytics team members can use the connection string and create all sorts of scripts for specific preprocessing and/or analytics steps such as `multiple_linear_regression.py`, `XGBoost.py` or `identify_circular_rides.py` etc. anc collaboratively grow their project and since everyone is working on the same data source, it will allow each team member to contribute to the code without having to worry about breaking references to data or rebuilding what's already been done on their specific environment.
+Once the database is set and ready, use the `analytics.py` script to run a very simple analytics query and observe its results. The analytics team members can use the connection string and create all sorts of scripts for specific preprocessing and/or analytics steps such as `multiple_linear_regression.py`, `XGBoost.py` or `identify_circular_rides.py` etc. anc collaboratively grow their project. Since everyone is working on the same data source, it will allow each team member to contribute to the code without worrying about breaking references to data or having to rebuild some of the logic that's already been done on their specific environment.
 
 ## References
 ### The article the course project is based on
