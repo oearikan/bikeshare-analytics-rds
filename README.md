@@ -14,7 +14,7 @@ The database is designed to act as a **shared, immutable source of truth** that 
 - [References](#references)
 
 ## Overview
-This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 study [ref]. That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
+This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 study [ref](#the-article-the-course-project-is-based-on). That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
 
 Several limitations of the original dataset motivated the creation of this read-only analytics database:
 - **Data freshness**
@@ -138,7 +138,7 @@ Once the database is set and ready, use the `analytics.py` script to run a very 
 
 ## References
 ### The article the course project is based on
-[ref]: Fanaee-T, H., & Gama, J. (2014). Event labeling combining ensemble detectors and background knowledge. _Progress in Artificial Intelligence_, 2(2–3), 113–127. https://doi.org/10.1007/s13748-013-0040-3
+Fanaee-T, H., & Gama, J. (2014). Event labeling combining ensemble detectors and background knowledge. _Progress in Artificial Intelligence_, 2(2–3), 113–127. https://doi.org/10.1007/s13748-013-0040-3
 
 ### Data Sources
 - **Capital Bikeshare Data**: [S3 Bucket](https://s3.amazonaws.com/capitalbikeshare-data/index.html)
