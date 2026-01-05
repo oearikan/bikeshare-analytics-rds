@@ -1,6 +1,5 @@
 # Bikeshare Trips & Weather Analytics Database
-Read-only Analytics PostgreSQL Database (hosted on AWS RDS)
-This repository contains scripts and configuration to build a **read-only analytics database** hosted on AWS, intended for use by **students and researchers** analyzing bikeshare trips and associated weather data.
+Read-only Analytics PostgreSQL Database (hosted on AWS RDS). This repository contains scripts and configuration to build a **read-only analytics database** hosted on AWS, intended for use by **students and researchers** analyzing bikeshare trips and associated weather data.
 
 The database is designed to act as a **shared, immutable source of truth** that supports exploratory analysis, custom feature engineering, and scalable querying without requiring collaborators to manage large local datasets.
 
@@ -14,19 +13,14 @@ The database is designed to act as a **shared, immutable source of truth** that 
 - [References](#references)
 
 ## Overview
-This project originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 [paper](#the-article-the-course-project-is-based-on). That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
+This repo originated from a group assignment that relied on a bikeshare dataset originally prepared for an October 2013 [paper](#the-article-the-course-project-is-based-on). That dataset combined individual trip records with daily and hourly weather data for the years 2011–2012.
 
 Several limitations of the original dataset motivated the creation of this read-only analytics database:
-- **Data freshness**
-Research naturally benefits from the most complete and up-to-date data available. Individual bikeshare trip data is freely [published](#data-sources), the original study is quite dated, therefore the insight it would provide relevant to this day would be limited.
-- **Preprocessed, "frozen" CSVs**
-The original dataset was heavily preprocessed and feature-engineered to answer specific research questions. By contrast, this database preserves the raw data, allowing researchers to define their own preprocessing steps and engineered features while keeping the underlying data unchanged.
-- **Weather data consistency** 
-The meteorological data source used in the original study was no longer available as of October 2025. This project uses a new weather data source (ref here), ensuring consistent coverage across all year.
-- **Collaboration friction** 
-Sharing large CSV files across collaborators often leads to duplicated storage, version drift, and confusion over which file is authoritative.
-- **Local compute limitations** 
-Once datasets exceed ~10 million rows, local analysis becomes slow and memory-constrained. Hosting the data in the cloud allows heavier queries to be executed close to the data, while smaller result sets can be pulled into local environments for further analysis.
+- **Data freshness**: Research naturally benefits from the most complete and up-to-date data available. Individual bikeshare trip data is freely [published](#data-sources), the original study is quite dated, therefore the insight it would provide relevant to this day would be limited.
+- **Preprocessed, "frozen" CSVs**: The original dataset was heavily preprocessed and feature-engineered to answer specific research questions. By contrast, this database preserves the raw data, allowing researchers to define their own preprocessing steps and engineered features while keeping the underlying data unchanged.
+- **Weather data consistency**: The meteorological data source used in the original study was no longer available as of October 2025. This project uses a new weather [data source](#data-sources), ensuring consistent coverage across all years.
+- **Collaboration friction**: Sharing large CSV files across collaborators often leads to duplicated storage, version drift, and confusion over which file is authoritative.
+- **Local compute limitations**: Once datasets exceed ~10 million rows, local analysis becomes slow and memory-constrained. Hosting the data in the cloud allows heavier queries to be executed close to the data, while smaller result sets can be pulled into local environments for further analysis.
 
 ## Features
 - Automated data fetching from Capital Bikeshare S3 bucket and Open-Meteo API
@@ -36,7 +30,7 @@ Once datasets exceed ~10 million rows, local analysis becomes slow and memory-co
 - Sample analytics queries and visualization examples
 
 ## Prerequisites
-There is no mention in this document on how to satisfy below requirements, it is left to the user. Relevant documentation and modern AI tools can help fill the gap.
+There is only a little mention in this document on how to satisfy below requirements, bulk of it is left to the user. Relevant documentation and modern AI tools can help fill the gap in setting them up.
 ### AWS
 - Active AWS account
 - Ability to create RDS instances, EC2 security groups, and manage VPC settings
@@ -48,7 +42,7 @@ There is no mention in this document on how to satisfy below requirements, it is
 - pip package manager
 
 ### Environment variables
-Set the following environment variables before running the setup steps script.
+The following environment variables need to be set before the scripts could
 - `export PGPW="your_postgres_password"` _# Password for postgres admin user_
 - `export ROUSRPW="your_readonly_password"` _# Password for rouser (read-only analytics user)_
 
@@ -113,7 +107,8 @@ Edit `py_scripts/rds_provision.py` and update the following values in the `creat
 - `VpcSecurityGroupIds`: Your VPC security group ID(s)
 - `DBSubnetGroupName`: Your DB subnet group name
 
-You can find these values in your AWS Console under RDS → Subnet groups and EC2 → Security Groups.
+You can find these values in your AWS Console under RDS → Subnet groups and EC2 → Security Groups.  
+A future to do: Write a helper function that would allow a boto client to return those values and insert them in place.
 
 ### 7. Run the Setup Script
 Execute the main setup script to provision the RDS instance, create tables, and populate data:
@@ -134,7 +129,7 @@ The script will:
 ## Usage
 Based on feedback from the scripts, some steps might need to run again or in isolation. There are also couple of helper funtions for deleting the rds if need be, fetching information via boto client etc...
 
-Once the database is set and ready, use the `analytics.py` script to run a very simple analytics query and observe its results. The analytics team members can use the connection string and create all sorts of scripts for specific preprocessing and/or analytics steps such as `multiple_linear_regression.py`, `XGBoost.py` or `identify_circular_rides.py` etc. anc collaboratively grow their project. Since everyone is working on the same data source, it will allow each team member to contribute to the code without worrying about breaking references to data or having to rebuild some of the logic that's already been done on their specific environment.
+Once the database is set and ready, use the `analytics.py` script as a test to run a very simple analytics query and observe its results. The analytics team members can use the connection string and create all sorts of scripts for specific preprocessing and/or analytics steps such as `multiple_linear_regression.py`, `XGBoost.py` or `identify_circular_rides.py` etc. and collaboratively grow their project. Since everyone is working on the same data source, it will allow each team member to contribute to the code without worrying about breaking references to data or having to rebuild some of the logic that's already been done on their specific environment.
 
 ## References
 ### The article the course project is based on
